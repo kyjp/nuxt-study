@@ -7,7 +7,8 @@
             <NLayoutHeader>
                 <div class="pt-[24px] pb-[12px] px-[40px] flex flex-row items-center justify-end" >
                     <div class="flex flex-row items-center gap-[12px]">
-                        <NButton>ログアウト</NButton>
+                        <span class="text-[14px]">{{ authStore.user?.name }}</span>
+                        <NButton class="text-[14px]" @click="logout"><span class="text-[14px]">ログアウト</span></NButton>
                     </div>
                 </div>
             </NLayoutHeader>
@@ -21,6 +22,13 @@
 <script setup lang="ts">
 import { NLayout, NLayoutSider, NMenu, NLayoutHeader, NButton, NLayoutContent, type MenuOption } from "naive-ui";
 import {RouterLink} from "vue-router"
+
+const authStore = useAuthStore()
+
+const logout = () => {
+    authStore.clearUser()
+    navigateTo("/login")
+}
 
 const menuOptions: MenuOption[] = [
     {

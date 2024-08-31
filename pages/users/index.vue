@@ -14,6 +14,10 @@
 import type {NButton, NDataTable, DataTableColumns} from "naive-ui"
 import type {User} from "~/models/user"
 
+definePageMeta({
+    requiresAuth: true,
+})
+
 const api = useApi()
 const router = useRouter()
 
