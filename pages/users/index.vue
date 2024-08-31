@@ -6,12 +6,14 @@
                 <spa class="text-[14px]">新規登録</spa>
             </NButton>
         </div>
-        <NDataTable remote :data="users" :columns="columns"/>
+        <!-- <NDataTable remote :data="users" :columns="columns" :rowProps="rowProps"/> -->
+        <AtomsDataTable v-if="users" :data="users" :columns="columns" @select="router.push(`/users/${$event.id}`)"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import type {NButton, NDataTable, DataTableColumns} from "naive-ui"
+import type { HTMLAttributes } from "vue";
 import type {User} from "~/models/user"
 
 definePageMeta({
@@ -23,7 +25,14 @@ const router = useRouter()
 
 const {data: users} = useAsyncData<User[]>(() => api("/users"))
 
-const columns = computed<DataTableColumns<Users>>(() => [
+const rowProps: (row: User) => HTMLAttributes = (row) => ({
+    style: {
+        cursor: 'pointer'
+    },
+    onClick: () => router.push(`/users/${row.id}`)
+})
+
+const columns = computed<DataTableColumns<User>>(() => [
     {
         key: "id",
         title: "ID",

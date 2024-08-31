@@ -3,12 +3,12 @@
         <div class="flex items-center justify-between pb-[12px]">
             <span class="text-[24px] font-bold">Posts</span>
         </div>
-        <NDataTable remote :data="posts" :columns="columns"/>
+        <AtomsDataTable v-if="posts" :data="posts" :columns="columns" @select="router.push(`/posts/${$event.id}`)"/>
     </div>
 </template>
 
 <script setup lang="ts">
-import type {NButton, NDataTable, DataTableColumns} from "naive-ui"
+import type {DataTableColumns} from "naive-ui"
 import type { Post } from "~/models/post"
 
 definePageMeta({
@@ -16,6 +16,7 @@ definePageMeta({
 })
 
 const api = useApi()
+const router = useRouter()
 const {data: posts} = useAsyncData<Post[]>(() => api("/posts"))
 
 const columns = computed<DataTableColumns<Posts>>(() => [
