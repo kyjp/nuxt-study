@@ -1,5 +1,7 @@
 <template>
     <div class="min-h-screen flex items-center justify-center">
-        <slot />
+        <n-loading-bar-provider>
+            <slot />
+        </n-loading-bar-provider>
     </div>
 </template>

@@ -1,4 +1,4 @@
-import { User } from "~/models/user"
+import { type User } from "~/models/user"
 import type {RouteLocationNormalized} from "vue-router"
 export const useAuthStore = defineStore(
     'auth',

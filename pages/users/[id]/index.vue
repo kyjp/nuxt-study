@@ -1,6 +1,5 @@
 <template>
-    <div>
-        {{ JSON.stringify(user, null, 2) }}
+    <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
     </div>
 </template>
 

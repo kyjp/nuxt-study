@@ -18,5 +18,9 @@ export default defineNuxtConfig({
       Components({resolvers: [NaiveUiResolver()]})
     ]
   },
-  modules: ['@pinia/nuxt']
+  modules: ['@pinia/nuxt'],
+  imports: {
+    dirs: ["stores"],
+  },
+  plugins: ["@/plugins/naive"],
 })
