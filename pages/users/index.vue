@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type {NButton, NDataTable, DataTableColumns} from "naive-ui"
+import type {NButton, DataTableColumns} from "naive-ui"
 import type { HTMLAttributes } from "vue";
 import type {User} from "~/models/user"
 
